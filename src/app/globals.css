@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Paleta: violeta pastel, contenida y profesional.
+   Los pasteles viven en fondos y acentos; el texto y los bordes
+   mantienen contraste alto para que el sitio no se sienta "de juguete".
+------------------------------------------------------------------- */
+:root {
+  --bg: #faf8ff;
+  --bg-soft: #f3eefe;
+  --surface: #ffffff;
+  --surface-2: #f8f5ff;
+  --border: #e8e0f8;
+  --border-strong: #d6c9f0;
+
+  --text: #201a30;
+  --text-muted: #635b7d;
+  --text-subtle: #8c85a3;
+
+  --primary: #6d4ac7;
+  --primary-hover: #5a3ab0;
+  --primary-soft: #a98bea;
+  --primary-wash: #efe9fd;
+
+  --pastel-violet: #e9dffc;
+  --pastel-lilac: #ded3fb;
+  --pastel-rose: #f6e4f4;
+  --pastel-sky: #dee7fb;
+
+  --ring: rgba(109, 74, 199, 0.35);
+  --shadow-sm: 0 1px 2px rgba(45, 27, 92, 0.05);
+  --shadow-md: 0 8px 24px -12px rgba(45, 27, 92, 0.18);
+  --shadow-lg: 0 24px 60px -32px rgba(45, 27, 92, 0.35);
+}
+
+:root[data-theme="dark"] {
+  --bg: #100d1b;
+  --bg-soft: #171227;
+  --surface: #1b1630;
+  --surface-2: #221b3b;
+  --border: #2d2549;
+  --border-strong: #3d3363;
+
+  --text: #efeafb;
+  --text-muted: #ada4c9;
+  --text-subtle: #8880a3;
+
+  --primary: #b99bff;
+  --primary-hover: #cbb4ff;
+  --primary-soft: #7d61c9;
+  --primary-wash: #241c3e;
+
+  --pastel-violet: #2a2145;
+  --pastel-lilac: #302650;
+  --pastel-rose: #3a2647;
+  --pastel-sky: #23294a;
+
+  --ring: rgba(185, 155, 255, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 24px 60px -32px rgba(0, 0, 0, 0.8);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-base: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text-base: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-wash: var(--primary-wash);
+  --color-pastel-violet: var(--pastel-violet);
+  --color-pastel-lilac: var(--pastel-lilac);
+  --color-pastel-rose: var(--pastel-rose);
+  --color-pastel-sky: var(--pastel-sky);
+
+  --font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--primary-soft);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Aura pastel de fondo -------------------------------------------- */
+.aura {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+:root[data-theme="dark"] .aura {
+  opacity: 0.45;
+}
+
+/* Malla de puntos sutil ------------------------------------------- */
+.dotted {
+  background-image: radial-gradient(
+    var(--border-strong) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Aparición al hacer scroll --------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scrollbar ------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-soft);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+  border: 2px solid var(--bg-soft);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-soft);
+}

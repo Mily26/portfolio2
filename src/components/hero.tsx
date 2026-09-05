@@ -74,7 +74,9 @@ export default function Hero() {
               <ArrowDownIcon className="size-4 transition-transform group-hover:translate-y-0.5" />
             </a>
             <a
-              href={`mailto:${person.email}`}
+              href={person.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface)] px-6 py-3.5 text-[14.5px] font-semibold text-[var(--text)] transition hover:border-[var(--primary-soft)] hover:text-[var(--primary)]"
             >
               <MailIcon className="size-[18px]" />

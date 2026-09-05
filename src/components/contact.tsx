@@ -36,7 +36,7 @@ export default function Contact() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      window.location.href = `mailto:${person.email}`;
+      window.open(person.linkedin, "_blank", "noopener,noreferrer");
     }
   }
 
@@ -69,7 +69,9 @@ export default function Contact() {
 
                 <div className="mt-9 flex flex-wrap items-center gap-3">
                   <a
-                    href={`mailto:${person.email}`}
+                    href={person.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-6 py-3.5 text-[14.5px] font-semibold text-white shadow-[var(--shadow-md)] transition hover:bg-[var(--primary-hover)]"
                   >
                     <MailIcon className="size-[18px]" />
